@@ -25,10 +25,29 @@ def print_args(func):
     return new_func
 
 
+def print_messages(start_message: str, end_message: str):
+    """decoraot for print massages
+    Args:
+        func: function 
+        start_message: start
+        end_message: end
+    return:
+        new_func:function decorated with printing massages
+    """
+    def _print_messages(func):
+        def new_func(*args, **kwargs):
+            print(start_message)
+            result = func(*args, **kwargs)
+            print(end_message)
+            return result
+        return new_func
+    return _print_messages
+
 
 def add_two_ints(a: int, b: int):
     return a + b
 
+@print_messages('start', 'end')
 @print_args
 @print_result
 def multiple_two_ints(a: int, b: int):

@@ -8,7 +8,7 @@ def make_averager():
     total = 0
     
     def averager(new_value):
-        nonlocal count, total
+        #nonlocal count, total
         count += 1 
         total += new_value
         return total / count
